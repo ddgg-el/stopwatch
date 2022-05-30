@@ -20,12 +20,17 @@ udpPort.on("message", function(oscMsg, timeTag, info){
   console.log(("msg: ", oscMsg.args[0].value));
 })
 
+udpPort.on("error", function(err){
+  if(err.code == 'EHOSTDOWN' || err.code == 'EHOSTUNREACH'){
+    console.log("OSC Client not connected - Cleaning the client array...");
+    ip_arr = [];
+  };
+})
+
 
 function osc_sends(msg){
   for(var add in ip_arr){
-    // console.log(ip_arr[add])
     udpPort.send(msg, ip_arr[add], osc_port)
-
   }
 }
 

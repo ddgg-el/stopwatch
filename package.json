@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/markbrown4/websockets.git"
   },
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
   "bugs": {
     "url": "https://github.com/markbrown4/websockets/issues"
   },
